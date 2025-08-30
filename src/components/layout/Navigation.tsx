@@ -180,7 +180,7 @@ export const Navigation: React.FC = () => {
                 </div>
               ) : (
                 <Link
-                  to="/login"
+                  to="/secure-access-authentication-portal-cybersecurity-intelligence-platform"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-cyber-text hover:text-cyber-blue hover:bg-cyber-surface/60 border-t border-cyber-blue/20 pt-4"
                 >

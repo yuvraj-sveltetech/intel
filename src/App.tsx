@@ -17,7 +17,7 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/secure-access-authentication-portal-cybersecurity-intelligence-platform" element={<Login />} />
           <Route path="/" element={
             <ProtectedRoute>
               <div className="min-h-screen relative overflow-x-hidden">
