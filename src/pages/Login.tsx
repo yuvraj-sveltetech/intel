@@ -12,14 +12,14 @@ export const Login: React.FC = () => {
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
-  const { login, isAuthenticated } = useAuth();
+  const { login, isAuthenticated, loading, logout } = useAuth();
 
-  // Redirect if already authenticated
+  // If already authenticated, logout and stay on login page
   React.useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/', { replace: true });
+    if (isAuthenticated && !loading) {
+      logout();
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, loading, logout]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,6 +37,22 @@ export const Login: React.FC = () => {
       setIsLoading(false);
     }
   };
+
+  // Show loading while checking authentication
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center relative">
+        <div className="absolute inset-0 bg-cyber-bg">
+          <div className="absolute inset-0 bg-cyber-grid opacity-20"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-cyber-blue/5 via-transparent to-cyber-purple/5"></div>
+        </div>
+        <div className="relative z-10 cyber-glass p-8 text-center">
+          <div className="w-8 h-8 border-2 border-cyber-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-cyber-text">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center relative">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Bell, Menu, X, Shield, Bug, Database, Brain, Zap, Lock, LogOut } from 'lucide-react';
+import { Search, Bell, Menu, X, Shield, Bug, Database, Brain, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -8,7 +8,7 @@ export const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user } = useAuth();
 
   const navigationItems = [
     { path: '/news', label: 'News', icon: Zap },
