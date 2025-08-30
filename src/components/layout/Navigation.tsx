@@ -77,19 +77,12 @@ export const Navigation: React.FC = () => {
               </button>
             </div>
 
-            {/* Logout Button - Only show when authenticated */}
+            {/* Phone Number Display - Only show when authenticated */}
             {isAuthenticated && (
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center">
                 <span className="text-cyber-text text-sm hidden sm:block">
                   {user?.phoneNumber}
                 </span>
-                <button
-                  onClick={logout}
-                  className="cyber-button px-4 py-2 text-sm font-medium flex items-center space-x-2"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span>Sign Out</span>
-                </button>
               </div>
             )}
 
@@ -154,22 +147,12 @@ export const Navigation: React.FC = () => {
                 </Link>
               ))}
               
-              {/* Mobile Logout Link - Only show when authenticated */}
+              {/* Mobile Phone Number Display - Only show when authenticated */}
               {isAuthenticated && (
                 <div className="border-t border-cyber-blue/20 pt-4">
                   <div className="px-4 py-2 text-sm text-cyber-muted">
                     {user?.phoneNumber}
                   </div>
-                  <button
-                    onClick={() => {
-                      logout();
-                      setIsMenuOpen(false);
-                    }}
-                    className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-cyber-text hover:text-cyber-blue hover:bg-cyber-surface/60 w-full"
-                  >
-                    <LogOut className="h-5 w-5" />
-                    <span className="font-medium">Sign Out</span>
-                  </button>
                 </div>
               )}
             </div>
