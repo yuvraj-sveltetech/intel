@@ -77,8 +77,8 @@ export const Navigation: React.FC = () => {
               </button>
             </div>
 
-            {/* Login/Logout Button */}
-            {isAuthenticated ? (
+            {/* Logout Button - Only show when authenticated */}
+            {isAuthenticated && (
               <div className="flex items-center space-x-3">
                 <span className="text-cyber-text text-sm hidden sm:block">
                   {user?.phoneNumber}
@@ -91,13 +91,6 @@ export const Navigation: React.FC = () => {
                   <span>Sign Out</span>
                 </button>
               </div>
-            ) : (
-              <Link
-                to="/secure-access-authentication-portal-cybersecurity-intelligence-platform"
-                className="cyber-button px-4 py-2 text-sm font-medium"
-              >
-                Sign In
-              </Link>
             )}
 
             {/* Mobile Menu Button */}
@@ -161,8 +154,8 @@ export const Navigation: React.FC = () => {
                 </Link>
               ))}
               
-              {/* Mobile Login/Logout Link */}
-              {isAuthenticated ? (
+              {/* Mobile Logout Link - Only show when authenticated */}
+              {isAuthenticated && (
                 <div className="border-t border-cyber-blue/20 pt-4">
                   <div className="px-4 py-2 text-sm text-cyber-muted">
                     {user?.phoneNumber}
@@ -178,15 +171,6 @@ export const Navigation: React.FC = () => {
                     <span className="font-medium">Sign Out</span>
                   </button>
                 </div>
-              ) : (
-                <Link
-                  to="/secure-access-authentication-portal-cybersecurity-intelligence-platform"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-cyber-text hover:text-cyber-blue hover:bg-cyber-surface/60 border-t border-cyber-blue/20 pt-4"
-                >
-                  <Lock className="h-5 w-5" />
-                  <span className="font-medium">Sign In</span>
-                </Link>
               )}
             </div>
           </motion.div>
