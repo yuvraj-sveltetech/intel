@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Bell, Menu, X, Shield, Bug, Database, Brain, Zap } from 'lucide-react';
+import { Search, Bell, Menu, X, Shield, Bug, Database, Brain, Zap, Lock, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated, user, logout } = useAuth();
 
   const navigationItems = [
     { path: '/news', label: 'News', icon: Zap },
@@ -75,6 +77,29 @@ export const Navigation: React.FC = () => {
               </button>
             </div>
 
+            {/* Login/Logout Button */}
+            {isAuthenticated ? (
+              <div className="flex items-center space-x-3">
+                <span className="text-cyber-text text-sm hidden sm:block">
+                  {user?.phoneNumber}
+                </span>
+                <button
+                  onClick={logout}
+                  className="cyber-button px-4 py-2 text-sm font-medium flex items-center space-x-2"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span>Sign Out</span>
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="cyber-button px-4 py-2 text-sm font-medium"
+              >
+                Sign In
+              </Link>
+            )}
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -135,6 +160,34 @@ export const Navigation: React.FC = () => {
                   <span className="font-medium">{label}</span>
                 </Link>
               ))}
+              
+              {/* Mobile Login/Logout Link */}
+              {isAuthenticated ? (
+                <div className="border-t border-cyber-blue/20 pt-4">
+                  <div className="px-4 py-2 text-sm text-cyber-muted">
+                    {user?.phoneNumber}
+                  </div>
+                  <button
+                    onClick={() => {
+                      logout();
+                      setIsMenuOpen(false);
+                    }}
+                    className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-cyber-text hover:text-cyber-blue hover:bg-cyber-surface/60 w-full"
+                  >
+                    <LogOut className="h-5 w-5" />
+                    <span className="font-medium">Sign Out</span>
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-cyber-text hover:text-cyber-blue hover:bg-cyber-surface/60 border-t border-cyber-blue/20 pt-4"
+                >
+                  <Lock className="h-5 w-5" />
+                  <span className="font-medium">Sign In</span>
+                </Link>
+              )}
             </div>
           </motion.div>
         )}
