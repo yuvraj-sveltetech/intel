@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Shield, Eye, EyeOff, Lock, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
@@ -12,16 +12,14 @@ export const Login: React.FC = () => {
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
-  const location = useLocation();
   const { login, isAuthenticated } = useAuth();
 
   // Redirect if already authenticated
   React.useEffect(() => {
     if (isAuthenticated) {
-      const from = (location.state as any)?.from?.pathname || '/';
-      navigate(from, { replace: true });
+      navigate('/', { replace: true });
     }
-  }, [isAuthenticated, navigate, location]);
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,8 +29,7 @@ export const Login: React.FC = () => {
     try {
       const success = await login(phoneNumber, password);
       if (success) {
-        const from = (location.state as any)?.from?.pathname || '/';
-        navigate(from, { replace: true });
+        navigate('/', { replace: true });
       }
     } catch (err: any) {
       setError(err.message);

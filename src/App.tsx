@@ -10,7 +10,6 @@ import { ArticleDetail } from "./pages/ArticleDetail";
 import { Login } from "./pages/Login";
 import { MatrixRain } from "./components/ui/MatrixRain";
 import { AuthProvider } from "./contexts/AuthContext";
-import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -19,76 +18,64 @@ function App() {
         <Routes>
           <Route path="/secure-access-authentication-portal-cybersecurity-intelligence-platform" element={<Login />} />
           <Route path="/" element={
-            <ProtectedRoute>
-              <div className="min-h-screen relative overflow-x-hidden">
-                <MatrixRain />
-                <Navigation />
-                <main className="relative z-10">
-                  <Home />
-                </main>
-                <Footer />
-              </div>
-            </ProtectedRoute>
+            <div className="min-h-screen relative overflow-x-hidden">
+              <MatrixRain />
+              <Navigation />
+              <main className="relative z-10">
+                <Home />
+              </main>
+              <Footer />
+            </div>
           } />
           <Route path="/news" element={
-            <ProtectedRoute>
-              <div className="min-h-screen relative overflow-x-hidden">
-                <MatrixRain />
-                <Navigation />
-                <main className="relative z-10">
-                  <News />
-                </main>
-                <Footer />
-              </div>
-            </ProtectedRoute>
+            <div className="min-h-screen relative overflow-x-hidden">
+              <MatrixRain />
+              <Navigation />
+              <main className="relative z-10">
+                <News />
+              </main>
+              <Footer />
+            </div>
           } />
           <Route path="/vulnerabilities" element={
-            <ProtectedRoute>
-              <div className="min-h-screen relative overflow-x-hidden">
-                <MatrixRain />
-                <Navigation />
-                <main className="relative z-10">
-                  <Vulnerabilities />
-                </main>
-                <Footer />
-              </div>
-            </ProtectedRoute>
+            <div className="min-h-screen relative overflow-x-hidden">
+              <MatrixRain />
+              <Navigation />
+              <main className="relative z-10">
+                <Vulnerabilities />
+              </main>
+              <Footer />
+            </div>
           } />
           <Route path="/breaches" element={
-            <ProtectedRoute>
-              <div className="min-h-screen relative overflow-x-hidden">
-                <MatrixRain />
-                <Navigation />
-                <main className="relative z-10">
-                  <Breaches />
-                </main>
-                <Footer />
-              </div>
-            </ProtectedRoute>
+            <div className="min-h-screen relative overflow-x-hidden">
+              <MatrixRain />
+              <Navigation />
+              <main className="relative z-10">
+                <Breaches />
+              </main>
+              <Footer />
+            </div>
           } />
           <Route path="/intelligence" element={
-            <ProtectedRoute>
-              <div className="min-h-screen relative overflow-x-hidden">
-                <MatrixRain />
-                <Navigation />
-                <main className="relative z-10">
-                  <Intelligence />
-                </main>
-                <Footer />
-              </div>
-            </ProtectedRoute>
+            <div className="min-h-screen relative overflow-x-hidden">
+              <MatrixRain />
+              <Navigation />
+              <main className="relative z-10">
+                <Intelligence />
+              </main>
+              <Footer />
+            </div>
           } />
           <Route path="/article/:id" element={
-            <ProtectedRoute>
-              <div className="min-h-screen relative overflow-x-hidden">
-                <MatrixRain />
-                <Navigation />
-                <main className="relative z-10">
-                  <ArticleDetail />
-                </main>
-                <Footer />
-              </div>
-            </ProtectedRoute>
+            <div className="min-h-screen relative overflow-x-hidden">
+              <MatrixRain />
+              <Navigation />
+              <main className="relative z-10">
+                <ArticleDetail />
+              </main>
+              <Footer />
+            </div>
           } />
         </Routes>
       </Router>

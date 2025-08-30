@@ -93,7 +93,7 @@ export const Navigation: React.FC = () => {
               </div>
             ) : (
               <Link
-                to="/login"
+                to="/secure-access-authentication-portal-cybersecurity-intelligence-platform"
                 className="cyber-button px-4 py-2 text-sm font-medium"
               >
                 Sign In
